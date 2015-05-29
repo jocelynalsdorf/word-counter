@@ -1,6 +1,6 @@
  describe('wordCount', function() {
 
   it("returns a count and list of words", function() {
-    expect(wordCount("It is a mad mad mad world")).to.equal(["3:a", "2:word", "2:repeated", "1:this", "1:is"]);
+    expect(wordCount("It is a mad mad mad world")).to.eql(["3:mad", "1:world", "1:is", "1:a", "1:It"]);
   });
 });
