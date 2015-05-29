@@ -1,7 +1,10 @@
-var wordCount = function(sentence) {
-  var arr = sentence.split(" ");
+
+function wordCount(sent) {
+    var arr = sent.split(" ");
     var a = [], b = [], prev;
+
     arr.sort();
+
     for ( var i = 0; i < arr.length; i++ ) {
         if ( arr[i] !== prev ) {
             a.push(arr[i]);
@@ -11,20 +14,28 @@ var wordCount = function(sentence) {
         }
         prev = arr[i];
     }
-
-    wordSorter([a, b]);
-    //var result = [a, b];
-};
-
-    var wordSorter = function(result) {
+   
+    var answer = [a, b];
+    var result = answer;
+ 
     var words = result[0];
     var counts = result[1];
     var empty = [];
+ for (var i = 0; i < words.length; i ++) {
+    empty.push(counts[i] + ":" + words[i]);
+    empty.sort().reverse();
+ 
+   } 
+   return empty;
+}
 
-    for (var i = 0; i < words.length; i ++) {
-      empty.push(counts[i] + ":" + words[i]);
-      empty.sort().reverse();
+$(document).ready(function(){
+$("form#words").submit(function(event){
+var userSent = $("input#sent").val();
+var worder =  wordCount(userSent);
+$(".word-list").text(worder);
 
-      }
-      return empty;
-    };
+event.preventDefault();
+});
+
+});
